@@ -1,0 +1,15 @@
+package com.github.mauriciolimas.vehicle_resale.core.exception;
+
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
+public class BusinessException extends Exception {
+
+	private static final long serialVersionUID = 1L;
+	private String code;
+	private String description;
+	
+}
