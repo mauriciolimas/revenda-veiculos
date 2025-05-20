@@ -3,12 +3,14 @@ package com.github.mauriciolimas.vehicle_resale.application.controller;
 import org.springframework.stereotype.Component;
 
 import com.github.mauriciolimas.vehicle_resale.adapter.request.SearchVehicleRequest;
+import com.github.mauriciolimas.vehicle_resale.adapter.request.VehicleDTO;
 import com.github.mauriciolimas.vehicle_resale.adapter.request.VehicleRequest;
 import com.github.mauriciolimas.vehicle_resale.adapter.response.VehicleResponse;
 import com.github.mauriciolimas.vehicle_resale.core.exception.BusinessException;
 import com.github.mauriciolimas.vehicle_resale.core.usecase.CreateVehicleUseCase;
 import com.github.mauriciolimas.vehicle_resale.core.usecase.GetVehicleByCodeUseCase;
 import com.github.mauriciolimas.vehicle_resale.core.usecase.SearchVehiclesUseCase;
+import com.github.mauriciolimas.vehicle_resale.core.usecase.UpdateVehicleUseCase;
 import com.github.mauriciolimas.vehicle_resale.core.valueobject.pagination.PageData;
 import com.github.mauriciolimas.vehicle_resale.core.valueobject.pagination.Pageable;
 import com.github.mauriciolimas.vehicle_resale.core.valueobject.vehicle.VehicleFilter;
@@ -22,6 +24,7 @@ public class VehicleController {
 	private final SearchVehiclesUseCase searchVehiclesUseCase;
 	private final CreateVehicleUseCase createVehicleUseCase;
 	private final GetVehicleByCodeUseCase getVehicleByCodeUseCase;
+	private final UpdateVehicleUseCase updateVehicleUseCase;
 	
 	public PageData<VehicleResponse> list(VehicleFilter filter, Pageable pageable) throws BusinessException {
 		return searchVehiclesUseCase.execute(new SearchVehicleRequest(filter, pageable));
@@ -33,5 +36,9 @@ public class VehicleController {
 	
 	public VehicleResponse findByCode(String code) throws BusinessException {
 		return getVehicleByCodeUseCase.execute(code);
+	}
+
+	public VehicleResponse update(VehicleDTO vehicleDTO) throws BusinessException {
+		return updateVehicleUseCase.execute(vehicleDTO);
 	}
 }

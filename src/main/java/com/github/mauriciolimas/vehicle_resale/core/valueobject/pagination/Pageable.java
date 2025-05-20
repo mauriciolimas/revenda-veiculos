@@ -62,6 +62,10 @@ public class Pageable {
 	}
 
 	public PageRequest getPageRequest() {
+		if (this.sort != null && this.direction != null) {
+			return PageRequest.of(this.page, this.size, Sort.by(Direction.fromString(direction.toUpperCase()), this.sort));
+		}
+		
 		if (this.sort != null) {
 			return PageRequest.of(this.page, this.size, Sort.by(this.sort));
 		}
@@ -100,4 +104,5 @@ public class Pageable {
 		}
 		return PageRequest.of(this.page, this.size, sorted);
 	}
+	
 }
