@@ -8,6 +8,7 @@ import static com.github.mauriciolimas.vehicle_resale.infra.database.specificati
 import java.util.Optional;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +55,7 @@ public class VehicleRepositoryImpl implements VehicleRepository {
 				.and(hasValueMin(filter.getPriceMin(), "price"))
 				.and(hasValueMax(filter.getPriceMax(), "price"));
 
-		Page<VehicleJpaEntity> page = repository.findAll(spec, pageable.getPageRequest());
+		Page<VehicleJpaEntity> page = repository.findAll(spec, pageable.getPageRequest(Direction.ASC, "price"));
 		return PageData.from(page.getContent().stream().map(mapper::toEntity).toList(), page);
 	}
 
