@@ -18,6 +18,15 @@
 		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
 		<org.projectlombok.version>1.18.24</org.projectlombok.version>
 		<compiler-plugin.version>3.8.1</compiler-plugin.version>
+		<sonar.exclusions>
+			**/infra/**/*,
+			**/api/**/*,
+			**/mapper/**/*,
+			**/adapter/**/*,
+			**/exception/**/*,
+			**/*Generated*.java,
+			**/VehicleResaleApplication.java
+		</sonar.exclusions>
 	</properties>
 	<dependencies>
 		<dependency>
