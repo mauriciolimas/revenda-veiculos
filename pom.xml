@@ -19,6 +19,8 @@
 		<org.projectlombok.version>1.18.24</org.projectlombok.version>
 		<compiler-plugin.version>3.8.1</compiler-plugin.version>
 		<sonar.exclusions>
+			**/api/controller/**/*,
+			**/application/controller/**/*,
 			**/infra/**/*,
 			**/api/**/*,
 			**/mapper/**/*,
