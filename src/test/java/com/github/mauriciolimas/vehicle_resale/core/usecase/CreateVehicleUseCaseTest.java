@@ -1,6 +1,7 @@
 package com.github.mauriciolimas.vehicle_resale.core.usecase;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import com.github.mauriciolimas.vehicle_resale.adapter.VehicleMapper;
 import com.github.mauriciolimas.vehicle_resale.adapter.request.VehicleRequest;
 import com.github.mauriciolimas.vehicle_resale.adapter.response.VehicleResponse;
 import com.github.mauriciolimas.vehicle_resale.core.exception.BusinessException;
+import com.github.mauriciolimas.vehicle_resale.core.exception.VehicleInvalidException;
 import com.github.mauriciolimas.vehicle_resale.core.repository.VehicleRepository;
 import com.github.mauriciolimas.vehicle_resale.util.VehicleMockUtil;
 
@@ -33,10 +35,16 @@ class CreateVehicleUseCaseTest {
 	@Test
 	void test_createVehicle() throws BusinessException {
 		Mockito.when(repository.save(Mockito.any())).thenReturn(VehicleMockUtil.vehicle());
-		
 		CreateVehicleUseCase useCase = new CreateVehicleUseCase(repository, mapper);
 		VehicleRequest request = VehicleMockUtil.vehicleRequest();
 		VehicleResponse response = useCase.execute(request);
 		assertNotNull(response);
+	}
+	
+	@Test
+	void test_doesNotCreated() {
+		CreateVehicleUseCase useCase = new CreateVehicleUseCase(repository, mapper);
+		VehicleRequest request = VehicleMockUtil.invalidVehicleRequest();
+		assertThrows(VehicleInvalidException.class, () -> useCase.execute(request));
 	}
 }

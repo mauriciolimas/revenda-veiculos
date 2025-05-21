@@ -15,6 +15,11 @@ public final class VehicleMockUtil {
 		return new VehicleRequest("Fiat", "Pulse Turbo Hybrid", 2024, VehicleColor.BLACK, BigDecimal.valueOf(149990.90),
 				VehicleType.CAR);
 	}
+	
+	public static VehicleRequest invalidVehicleRequest() {
+		return new VehicleRequest("Fiat", "Pulse Turbo Hybrid", 2060, VehicleColor.BLACK, BigDecimal.valueOf(149990.90),
+				VehicleType.CAR);
+	}
 
 	public static Vehicle vehicle() {
 		Vehicle vehicle = new Vehicle();
