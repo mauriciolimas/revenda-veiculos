@@ -30,6 +30,7 @@ public final class VehicleMockUtil {
 		vehicle.setColor(VehicleColor.BLACK);
 		vehicle.setPrice(BigDecimal.valueOf(149990.90));
 		vehicle.setType(VehicleType.CAR);
+		vehicle.setStatus(VehicleStatus.AVAILABLE);
 		return vehicle;
 	}
 

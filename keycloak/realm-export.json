@@ -1,143 +1,34 @@
 {
   "realm": "revenda",
   "enabled": true,
+  "groups": [
+    {
+      "name": "buyer"
+    },
+    {
+      "name": "seller"
+    }
+  ],
   "users": [
-  {
-    "username": "samara.morgan",
-    "enabled": true,
-    "emailVerified": true,
-    "firstName": "Samara",
-    "lastName": "Morgan",
-    "email": "samara@horrorverse.com",
-    "credentials": [
-      {
-        "type": "password",
-        "value": "123456",
-        "temporary": false
-      }
-    ]
-  },
-  {
-    "username": "jason.voorhees",
-    "enabled": true,
-    "emailVerified": true,
-    "firstName": "Jason",
-    "lastName": "Voorhees",
-    "email": "jason@crystal-lake.com",
-    "credentials": [
-      {
-        "type": "password",
-        "value": "123456",
-        "temporary": false
-      }
-    ]
-  },
-  {
-    "username": "freddy.krueger",
-    "enabled": true,
-    "emailVerified": true,
-    "firstName": "Freddy",
-    "lastName": "Krueger",
-    "email": "freddy@nightmare.com",
-    "credentials": [
-      {
-        "type": "password",
-        "value": "123456",
-        "temporary": false
-      }
-    ]
-  },
-  {
-    "username": "michael.myers",
-    "enabled": true,
-    "emailVerified": true,
-    "firstName": "Michael",
-    "lastName": "Myers",
-    "email": "michael@haddonfield.com",
-    "credentials": [
-      {
-        "type": "password",
-        "value": "123456",
-        "temporary": false
-      }
-    ]
-  },
-  {
-    "username": "leather.face",
-    "enabled": true,
-    "emailVerified": true,
-    "firstName": "Leather",
-    "lastName": "Face",
-    "email": "leather@chainsawmassacre.com",
-    "credentials": [
-      {
-        "type": "password",
-        "value": "123456",
-        "temporary": false
-      }
-    ]
-  },
-  {
-    "username": "chucky.doll",
-    "enabled": true,
-    "emailVerified": true,
-    "firstName": "Chucky",
-    "lastName": "Doll",
-    "email": "chucky@playtime.com",
-    "credentials": [
-      {
-        "type": "password",
-        "value": "123456",
-        "temporary": false
-      }
-    ]
-  },
-  {
-    "username": "pennywise.clown",
-    "enabled": true,
-    "emailVerified": true,
-    "firstName": "Pennywise",
-    "lastName": "Clown",
-    "email": "pennywise@sewers.com",
-    "credentials": [
-      {
-        "type": "password",
-        "value": "123456",
-        "temporary": false
-      }
-    ]
-  },
-  {
-    "username": "ghost.face",
-    "enabled": true,
-    "emailVerified": true,
-    "firstName": "Ghost",
-    "lastName": "Face",
-    "email": "ghostface@scream.com",
-    "credentials": [
-      {
-        "type": "password",
-        "value": "123456",
-        "temporary": false
-      }
-    ]
-  },
-  {
-    "username": "carrie.white",
-    "enabled": true,
-    "emailVerified": true,
-    "firstName": "Carrie",
-    "lastName": "White",
-    "email": "carrie@promnight.com",
-    "credentials": [
-      {
-        "type": "password",
-        "value": "123456",
-        "temporary": false
-      }
-    ]
-  },
-  {
+    {
+      "username": "samara.morgan",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Samara",
+      "lastName": "Morgan",
+      "email": "samara@horrorverse.com",
+      "groups": [
+        "buyer"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "123456",
+          "temporary": false
+        }
+      ]
+    },
+    {
     "username": "norman.bates",
     "enabled": true,
     "emailVerified": true,
@@ -152,8 +43,7 @@
       }
     ]
   }
-]
-,
+  ],
   "clients": [
     {
       "clientId": "api-revenda",
@@ -162,7 +52,23 @@
       "secret": "client-secret",
       "redirectUris": [],
       "standardFlowEnabled": true,
-      "directAccessGrantsEnabled": true
+      "directAccessGrantsEnabled": true,
+      "protocolMappers": [
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true",
+            "claim.name": "groups",
+            "jsonType.label": "String",
+            "full.path": "false"
+          }
+        }
+      ]
     }
   ]
 }
