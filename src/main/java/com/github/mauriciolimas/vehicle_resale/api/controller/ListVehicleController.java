@@ -13,6 +13,7 @@ import com.github.mauriciolimas.vehicle_resale.core.valueobject.pagination.PageD
 import com.github.mauriciolimas.vehicle_resale.core.valueobject.pagination.Pageable;
 import com.github.mauriciolimas.vehicle_resale.core.valueobject.vehicle.VehicleFilter;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -23,7 +24,7 @@ public class ListVehicleController {
 	private final VehicleController controller;
 	
 	@GetMapping
-	public ResponseEntity<?> list(VehicleFilter filter, Pageable pageable) throws BusinessException {
+	public ResponseEntity<?> list(@Valid VehicleFilter filter, Pageable pageable) throws BusinessException {
 		PageData<VehicleResponse> page = controller.list(filter, pageable);
 		return ResponseEntity.status(HttpStatus.OK).body(page);
 	}

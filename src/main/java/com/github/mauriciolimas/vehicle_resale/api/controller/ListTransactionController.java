@@ -16,6 +16,7 @@ import com.github.mauriciolimas.vehicle_resale.core.valueobject.pagination.Pagea
 import com.github.mauriciolimas.vehicle_resale.core.valueobject.transaction.TransactionFilter;
 
 import jakarta.annotation.security.RolesAllowed;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -27,7 +28,7 @@ public class ListTransactionController {
 	
 	@GetMapping
 	@RolesAllowed(SELLER)
-	public ResponseEntity<?> list(TransactionFilter filter, Pageable pageable) throws BusinessException {
+	public ResponseEntity<?> list(@Valid TransactionFilter filter, Pageable pageable) throws BusinessException {
 		PageData<TransactionResponse> page = controller.list(filter, pageable);
 		return ResponseEntity.status(HttpStatus.OK).body(page);
 	}

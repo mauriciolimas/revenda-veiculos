@@ -16,6 +16,7 @@ import com.github.mauriciolimas.vehicle_resale.application.controller.VehicleCon
 import com.github.mauriciolimas.vehicle_resale.core.exception.BusinessException;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -28,7 +29,7 @@ public class UpdateVehicleController {
 	
 	@Transactional
 	@PutMapping("/{code}")
-	public ResponseEntity<?> update(@RequestBody VehicleUpdateRequest request, @PathVariable("code") String code) throws BusinessException {
+	public ResponseEntity<?> update(@RequestBody @Valid VehicleUpdateRequest request, @PathVariable("code") String code) throws BusinessException {
 		VehicleDTO vehicleDTO = mapper.toDTO(request, code);
 		VehicleResponse response = controller.update(vehicleDTO);
 		return ResponseEntity.status(HttpStatus.OK).body(response);

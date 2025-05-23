@@ -16,6 +16,7 @@ import com.github.mauriciolimas.vehicle_resale.core.exception.BusinessException;
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -28,7 +29,7 @@ public class PurchaseVehicleController {
 	@PostMapping
 	@Transactional
 	@RolesAllowed(BUYER)
-	public ResponseEntity<?> create(@RequestBody PurchaseRequest request) throws BusinessException {
+	public ResponseEntity<?> create(@RequestBody @Valid PurchaseRequest request) throws BusinessException {
 		PurchaseResponse response = controller.create(request);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
