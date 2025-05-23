@@ -59,4 +59,13 @@ public class CommonsSpecifications {
 			return criteriaBuilder.conjunction();
 		};
 	}
+	
+	public static <T> Specification<T> hasValue(String value, String field) {
+		return (root, query, criteriaBuilder) -> {
+			if(value != null && !value.isEmpty()) {
+				return criteriaBuilder.equal(root.get(field), value);
+			}
+			return criteriaBuilder.conjunction();
+		};
+	}
 }
