@@ -10,6 +10,13 @@ public class BusinessException extends Exception {
 
 	private static final long serialVersionUID = 1L;
 	private String code;
-	private String description;
+	private String message;
+	private Integer statusCode;
+	
+	public BusinessException(String code, String message) {
+		this.code = code;
+		this.message = message;
+		this.statusCode = 400;
+	}
 	
 }

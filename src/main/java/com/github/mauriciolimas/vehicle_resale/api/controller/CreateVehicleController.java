@@ -11,8 +11,11 @@ import com.github.mauriciolimas.vehicle_resale.adapter.request.VehicleRequest;
 import com.github.mauriciolimas.vehicle_resale.adapter.response.VehicleResponse;
 import com.github.mauriciolimas.vehicle_resale.application.controller.VehicleController;
 import com.github.mauriciolimas.vehicle_resale.core.exception.BusinessException;
+import com.github.mauriciolimas.vehicle_resale.infra.security.Roles;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -24,7 +27,8 @@ public class CreateVehicleController {
 	
 	@PostMapping
 	@Transactional
-	public ResponseEntity<?> create(@RequestBody VehicleRequest request) throws BusinessException {
+	@RolesAllowed(Roles.SELLER)
+	public ResponseEntity<?> create(@RequestBody @Valid VehicleRequest request) throws BusinessException {
 		VehicleResponse response = controller.create(request);
 		return ResponseEntity.status(HttpStatus.CREATED).body(response);
 	}
