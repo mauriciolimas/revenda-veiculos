@@ -1,6 +1,7 @@
 package com.github.mauriciolimas.vehicle_resale.core.entity;
 
 import java.math.BigDecimal;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
@@ -25,6 +26,8 @@ public class Vehicle {
 	private BigDecimal price;
 	private VehicleType type;
 	private VehicleStatus status;
+	private Instant createdAt;
+	private Instant updatedAt;
 	
 	public boolean isValid() {
 		LocalDate now = LocalDate.now().plus(1, ChronoUnit.YEARS);

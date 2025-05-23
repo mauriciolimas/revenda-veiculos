@@ -16,6 +16,7 @@ import com.github.mauriciolimas.vehicle_resale.core.usecase.CompleteTransactionU
 
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 @RestController
@@ -28,7 +29,7 @@ public class CompleteTransactionController {
 	@PostMapping
 	@Transactional
 	@RolesAllowed(SELLER)
-	public ResponseEntity<?> complete(@RequestBody TransactionCompleteRequest request) throws BusinessException {
+	public ResponseEntity<?> complete(@RequestBody @Valid TransactionCompleteRequest request) throws BusinessException {
 		TransactionResponse response = completeTransactionUseCase.execute(request);
 		return ResponseEntity.status(HttpStatus.OK).body(response);
 	}
