@@ -29,20 +29,23 @@
       ]
     },
     {
-    "username": "norman.bates",
-    "enabled": true,
-    "emailVerified": true,
-    "firstName": "Norman",
-    "lastName": "Bates",
-    "email": "norman@batesmotel.com",
-    "credentials": [
-      {
-        "type": "password",
-        "value": "123456",
-        "temporary": false
-      }
-    ]
-  }
+      "username": "norman.bates",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Norman",
+      "lastName": "Bates",
+      "email": "norman@batesmotel.com",
+      "groups": [
+        "seller"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "123456",
+          "temporary": false
+        }
+      ]
+    }
   ],
   "clients": [
     {
@@ -53,6 +56,12 @@
       "redirectUris": [],
       "standardFlowEnabled": true,
       "directAccessGrantsEnabled": true,
+      "attributes": {
+        "access.token.lifespan": "3600",
+        "refresh.token.lifespan": "86400",
+        "client.session.idle.timeout": "1800",
+        "client.session.max.lifespan": "43200"
+      },
       "protocolMappers": [
         {
           "name": "groups",
