@@ -10,7 +10,7 @@ import com.github.mauriciolimas.vehicle_resale.core.entity.Transaction;
 import com.github.mauriciolimas.vehicle_resale.infra.database.jpa.entity.TransactionJpaEntity;
 
 @Mapper(unmappedTargetPolicy = IGNORE, nullValueCheckStrategy = ALWAYS)
-public interface TransactionMapper {
+public interface TransactionJpaMapper {
 
 	@Mapping(target = "code", source = "id")
 	@Mapping(target = "status", source = "status")
