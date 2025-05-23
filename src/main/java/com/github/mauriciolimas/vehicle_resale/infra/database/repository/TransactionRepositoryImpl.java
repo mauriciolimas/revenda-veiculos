@@ -18,6 +18,7 @@ import com.github.mauriciolimas.vehicle_resale.core.valueobject.transaction.Tran
 import com.github.mauriciolimas.vehicle_resale.infra.database.jpa.entity.TransactionJpaEntity;
 import com.github.mauriciolimas.vehicle_resale.infra.database.jpa.repository.TransactionJpaRepository;
 import com.github.mauriciolimas.vehicle_resale.infra.database.mapper.TransactionJpaMapper;
+import com.github.mauriciolimas.vehicle_resale.infra.database.specifications.CommonsSpecifications;
 
 import lombok.AllArgsConstructor;
 
@@ -47,6 +48,16 @@ public class TransactionRepositoryImpl implements TransactionRepository {
 	@Override
 	public PageData<Transaction> list(TransactionFilter filter, Pageable pageable) {
 		Specification<TransactionJpaEntity> spec = Specification.where(hasEnum(filter.getStatus(), "status"));
+		Page<TransactionJpaEntity> page = repository.findAll(spec, pageable.getPageRequest());
+		List<Transaction> list = page.getContent().stream().map(mapper::toEntity).collect(Collectors.toList());
+		return PageData.from(list, page);
+	}
+	
+	@Override
+	public PageData<Transaction> findByBuyerId(String buyerId, TransactionFilter filter, Pageable pageable) {
+		Specification<TransactionJpaEntity> spec = Specification
+				.where(CommonsSpecifications.<TransactionJpaEntity>hasValue(buyerId, "buyerId"))
+				.and(hasEnum(filter.getStatus(), "status"));
 		Page<TransactionJpaEntity> page = repository.findAll(spec, pageable.getPageRequest());
 		List<Transaction> list = page.getContent().stream().map(mapper::toEntity).collect(Collectors.toList());
 		return PageData.from(list, page);

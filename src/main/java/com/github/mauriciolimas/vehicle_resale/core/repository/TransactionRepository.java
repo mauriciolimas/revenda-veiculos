@@ -13,5 +13,7 @@ public interface TransactionRepository {
 
 	PageData<Transaction> list(TransactionFilter filter, Pageable pageable);
 	
+	PageData<Transaction> findByBuyerId(String buyerId, TransactionFilter filter, Pageable pageable);
+	
 	Transaction save(Transaction transaction);
 }
