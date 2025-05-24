@@ -16,10 +16,12 @@ import org.springframework.web.context.request.WebRequest;
 
 import com.github.mauriciolimas.vehicle_resale.core.exception.BusinessException;
 
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
+@Hidden
 @ControllerAdvice
 @AllArgsConstructor
 public class HttpExceptionHandler {

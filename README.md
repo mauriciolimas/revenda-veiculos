@@ -63,7 +63,18 @@ docker-compose up -d
 ## 📚 Documentação da API
 Uma interface Swagger está disponível em:
 
+[Acesso a documentação](http://localhost:8081/swagger-ui/index.html)
 ```bash
-http://localhost:8080/swagger-ui.html
+http://localhost:8081/swagger-ui/index.html
 ```
 Essa interface permite testar os endpoints diretamente pela web.
+
+## Acesso a interface do Keycloak
+
+Para acessar a interface grafica do keycloak é necessário configurar o arquivos /etc/hosts e adicionar a entrada
+
+- Caminho no Linux: /etc/hosts
+- Caminho no Windows: C:\Windows\System32\drivers\etc\hosts
+```bash
+127.0.0.1 keycloak
+```
