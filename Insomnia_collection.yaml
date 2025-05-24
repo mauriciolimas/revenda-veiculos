@@ -1,0 +1,809 @@
+type: collection.insomnia.rest/5.0
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1732061903785
+  modified: 1732061903785
+collection:
+  - name: Autenticação
+    meta:
+      id: fld_f9b91a312e754d9aa5f643794299d56e
+      created: 1747686075949
+      modified: 1747686075949
+      sortKey: -1747686075949
+    children:
+      - url: "{{ _.AuthenticationURL }}/admin/realms/revenda/users"
+        name: Criar Novo Usuário
+        meta:
+          id: req_004130367b1647ba81877832e46f3f1e
+          created: 1747686078978
+          modified: 1748017856476
+          isPrivate: false
+          sortKey: -1747686078978
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+                "username": "jason.voorhees",
+                "firstName": "Jason",
+                "lastName": "Voorhees",
+                "email": "jason.voorhees@campcrystal.com",
+            		"enabled": true,
+                "emailVerified": true,
+            		"credentials": [
+            			{
+            				"type": "password",
+            				"value": "123456",
+            				"temporary": false
+            			}
+            		],
+            		"groups": [ "buyer" ]
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_075b143bd4d94cb88b3a92624461d101
+          - name: User-Agent
+            value: insomnia/11.1.0
+            id: pair_d8cfab8654124a41a46155bb13cc9387
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_f37711eafcf64137a6d3c2f4e5b371de',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+          disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.AuthenticationURL }}/realms/master/protocol/openid-connect/token"
+        name: Login Como Admin
+        meta:
+          id: req_f37711eafcf64137a6d3c2f4e5b371de
+          created: 1747686239512
+          modified: 1748013375099
+          isPrivate: false
+          sortKey: -1747686079078
+        method: POST
+        body:
+          mimeType: application/x-www-form-urlencoded
+          params:
+            - id: pair_632132b6fb0c44ac8fd37eb4aebc82d5
+              name: username
+              value: admin
+              disabled: false
+            - id: pair_410b5932efe047a8be5988ec4b7f3491
+              name: password
+              value: admin
+              disabled: false
+            - id: pair_0fec077ac2324b86a2d96cec89863f1c
+              name: grant_type
+              value: password
+              disabled: false
+            - id: pair_3b80a89604234df6b603da44f0802383
+              name: client_id
+              value: admin-cli
+              disabled: false
+        headers:
+          - name: Content-Type
+            value: application/x-www-form-urlencoded
+          - name: User-Agent
+            value: insomnia/11.1.0
+            id: pair_d8cfab8654124a41a46155bb13cc9387
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_f37711eafcf64137a6d3c2f4e5b371de',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'never', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{% response 'header', 'req_004130367b1647ba81877832e46f3f1e',
+          'b64::TG9jYXRpb24=::46b', 'never', 60 %}"
+        name: Recuperar Informações do Usuário
+        meta:
+          id: req_f84d69757a4741438a9e66645d658217
+          created: 1747687127880
+          modified: 1747687536123
+          isPrivate: false
+          sortKey: -1747686078928
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+            id: pair_d8cfab8654124a41a46155bb13cc9387
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_f37711eafcf64137a6d3c2f4e5b371de',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+          disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.AuthenticationURL
+          }}/admin/realms/revenda/users/9d5354f1-a71f-41c6-a507-c487124cd153/re\
+          set-password"
+        name: Definir Senha do Usuário
+        meta:
+          id: req_d9f26fbeea0d4964a23863832a1d3219
+          created: 1747687238910
+          modified: 1747687583885
+          isPrivate: false
+          sortKey: -1747686078878
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+                "type": "password",
+                "value": "senha123",
+                "temporary": false
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_075b143bd4d94cb88b3a92624461d101
+          - name: User-Agent
+            value: insomnia/11.1.0
+            id: pair_d8cfab8654124a41a46155bb13cc9387
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_f37711eafcf64137a6d3c2f4e5b371de',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+          disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.AuthenticationURL }}/realms/revenda/protocol/openid-connect/certs"
+        name: Public Key
+        meta:
+          id: req_8f9b052c134f44c0ae5d44c6b19c4971
+          created: 1747688106861
+          modified: 1747688133568
+          isPrivate: false
+          sortKey: -1747686078678
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.AuthenticationURL }}/admin/realms/revenda/users"
+        name: Listar Usuários
+        meta:
+          id: req_81840c95f46c483a810933728878fa7b
+          created: 1747956637941
+          modified: 1748009845512
+          isPrivate: false
+          sortKey: -1747686078953
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_f37711eafcf64137a6d3c2f4e5b371de',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.AuthenticationURL
+          }}/admin/realms/revenda/users/94ad8e53-ea84-41f0-a5bc-a1c2f0fa661c"
+        name: Detalhes do usuário
+        meta:
+          id: req_a461fb85525c4656b29660226113958f
+          created: 1748014088962
+          modified: 1748014219451
+          isPrivate: false
+          sortKey: -1747686078940.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.1.0
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_f37711eafcf64137a6d3c2f4e5b371de',
+            'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Revenda API
+    meta:
+      id: fld_3f59b2ef89e6464392d623ffe7118cd8
+      created: 1747703304089
+      modified: 1747703304089
+      sortKey: -1747703304089
+    children:
+      - name: Vendedor
+        meta:
+          id: fld_43e5028cd9e144eb86750b7f3c1445e9
+          created: 1748013184180
+          modified: 1748013402800
+          sortKey: -1748013184180
+        children:
+          - url: "{{ _.ResaleVehicleApiURL }}/vehicles"
+            name: Registrar Veiculo
+            meta:
+              id: req_baf3abe02ff34658bb88ce12516d02c2
+              created: 1747706001792
+              modified: 1748013267113
+              isPrivate: false
+              sortKey: -1748013253197
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                		"brand": "Fiat",
+                		"model": "Pulse Impetus Hybrid 1.0",
+                		"year": 2020,
+                		"color": "BLACK",
+                		"price": 149990.99,
+                		"type": "CAR"
+                }
+            parameters:
+              - id: pair_63e2ecd4c9df4545b0965c4a6a3a4e35
+                name: size
+                value: "2"
+                disabled: false
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.1.0
+            authentication:
+              type: bearer
+              token: "{% response 'body', 'req_85af8e6970034d3285d2f3cb25e7ebb2',
+                'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'never', 60 %}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.ResaleVehicleApiURL }}/vehicles/SALE000008"
+            name: Editar Veiculo
+            meta:
+              id: req_0453ad7027c44a519d521f79c1d042bf
+              created: 1747780545946
+              modified: 1748013277958
+              isPrivate: false
+              sortKey: -1748013253147
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"brand": "Renault 1.0",
+                	"model": "Logan",
+                	"year": 2021,
+                	"color": "BLACK",
+                	"price": 39000,
+                	"type": "CAR",
+                	"status": "SOLD"
+                }
+            parameters:
+              - id: pair_63e2ecd4c9df4545b0965c4a6a3a4e35
+                name: size
+                value: "2"
+                disabled: false
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.ResaleVehicleApiURL }}/transaction"
+            name: Listar Transações
+            meta:
+              id: req_16b25cdf8f344f49bbeac4ef5a873294
+              created: 1747954386159
+              modified: 1748044524396
+              isPrivate: false
+              sortKey: -1748013253097
+            method: GET
+            parameters:
+              - id: pair_9c23545fd7e64a15be28441359aa25b3
+                name: status
+                value: CANCELLED
+                disabled: true
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            authentication:
+              type: bearer
+              token: "{% response 'body', 'req_85af8e6970034d3285d2f3cb25e7ebb2',
+                'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.ResaleVehicleApiURL }}/transaction"
+            name: Completar Transação
+            meta:
+              id: req_0aed2f451c464cb59bbf708b04954736
+              created: 1747956344469
+              modified: 1748047839136
+              isPrivate: false
+              sortKey: -1748013252997
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	 	"code": "8c6eb360-eea8-4cee-bce3-896b8a75bf09",
+                		"completed": true
+                }
+            parameters:
+              - id: pair_9c23545fd7e64a15be28441359aa25b3
+                disabled: false
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.1.0
+            authentication:
+              type: bearer
+              token: "{% response 'body', 'req_85af8e6970034d3285d2f3cb25e7ebb2',
+                'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.AuthenticationURL }}/realms/revenda/protocol/openid-connect/token"
+            name: Login
+            meta:
+              id: req_85af8e6970034d3285d2f3cb25e7ebb2
+              created: 1748009794390
+              modified: 1748013408644
+              isPrivate: false
+              sortKey: -1748013253297
+            method: POST
+            body:
+              mimeType: application/x-www-form-urlencoded
+              params:
+                - id: pair_632132b6fb0c44ac8fd37eb4aebc82d5
+                  name: username
+                  value: norman.bates
+                  disabled: false
+                - id: pair_410b5932efe047a8be5988ec4b7f3491
+                  name: password
+                  value: "123456"
+                  disabled: false
+                - id: pair_0fec077ac2324b86a2d96cec89863f1c
+                  name: grant_type
+                  value: password
+                  disabled: false
+                - id: pair_3b80a89604234df6b603da44f0802383
+                  name: client_id
+                  value: api-revenda
+                  disabled: false
+                - id: pair_87566be546254351af3b4419662ed61c
+                  name: client_secret
+                  value: client-secret
+                  disabled: false
+            headers:
+              - name: Content-Type
+                value: application/x-www-form-urlencoded
+              - name: User-Agent
+                value: insomnia/11.1.0
+                id: pair_d8cfab8654124a41a46155bb13cc9387
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Comprador
+        meta:
+          id: fld_0485e3368b484f508e076615052eadc5
+          created: 1748013195184
+          modified: 1748013380519
+          sortKey: -1748013195184
+        children:
+          - url: "{{ _.AuthenticationURL }}/realms/revenda/protocol/openid-connect/token"
+            name: Login
+            meta:
+              id: req_48d7b0ca1f7748d79e061936a87ee16d
+              created: 1747687612874
+              modified: 1748013386875
+              isPrivate: false
+              sortKey: -1748013214335
+            method: POST
+            body:
+              mimeType: application/x-www-form-urlencoded
+              params:
+                - id: pair_632132b6fb0c44ac8fd37eb4aebc82d5
+                  name: username
+                  value: samara.morgan
+                  disabled: false
+                - id: pair_410b5932efe047a8be5988ec4b7f3491
+                  name: password
+                  value: "123456"
+                  disabled: false
+                - id: pair_0fec077ac2324b86a2d96cec89863f1c
+                  name: grant_type
+                  value: password
+                  disabled: false
+                - id: pair_3b80a89604234df6b603da44f0802383
+                  name: client_id
+                  value: api-revenda
+                  disabled: false
+                - id: pair_87566be546254351af3b4419662ed61c
+                  name: client_secret
+                  value: client-secret
+                  disabled: false
+            headers:
+              - name: Content-Type
+                value: application/x-www-form-urlencoded
+              - name: User-Agent
+                value: insomnia/11.1.0
+                id: pair_d8cfab8654124a41a46155bb13cc9387
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.ResaleVehicleApiURL }}/vehicles"
+            name: Listar Veiculos
+            meta:
+              id: req_c007b8261ea442b1a0e04f3f9d9e01dd
+              created: 1747703307921
+              modified: 1748052910839
+              isPrivate: false
+              sortKey: -1748013214235
+            method: GET
+            parameters:
+              - id: pair_63e2ecd4c9df4545b0965c4a6a3a4e35
+                name: size
+                value: "2"
+                disabled: true
+              - id: pair_a722c3604d8d451da47880538beddec1
+                name: model
+                value: Pulse
+                disabled: true
+              - id: pair_aadbff3a5d834df3ab949384385ee948
+                name: brand
+                value: Fiat
+                disabled: true
+              - id: pair_136355a99bc74796bad1299ec1bfebaf
+                name: color
+                value: BLACK
+                disabled: true
+              - id: pair_3a9cb0262366466caeb20f49dea12a0b
+                name: status
+                value: AVAILABLE
+                disabled: true
+              - id: pair_3e3c2c22e5d54f3483532b8f9cabb7cb
+                name: yearMin
+                value: "2019"
+                disabled: true
+              - id: pair_7a8d054737d0448b88f3ade31a82c069
+                name: yearMax
+                value: "2021"
+                disabled: true
+              - id: pair_423a8997caf947b998dea8a0482588e9
+                name: priceMin
+                value: "33000"
+                disabled: true
+              - id: pair_cedccc4e382c42f6bd3ee3817818a65e
+                name: priceMax
+                value: "50000"
+                disabled: true
+              - id: pair_1f5b0d46deb24e1e9fbd16911849eeed
+                name: sort
+                value: price
+                disabled: false
+              - id: pair_c61d9bf1444b4589bfaaa5a77237bb5f
+                name: direction
+                value: ASC
+                disabled: false
+              - id: pair_58090e36f6d44f2e8ad0bca7b0e61378
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.ResaleVehicleApiURL }}/vehicles/SALE000019"
+            name: Detalhe Veiculo
+            meta:
+              id: req_25c656d01c8f440189e71231fa7aa548
+              created: 1747708806650
+              modified: 1748013223545
+              isPrivate: false
+              sortKey: -1748013214135
+            method: GET
+            parameters:
+              - id: pair_9c23545fd7e64a15be28441359aa25b3
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.ResaleVehicleApiURL }}/purchase"
+            name: Comprar Veiculo
+            meta:
+              id: req_3b3d555fda8a4f06bfd32bc6ae06cdc7
+              created: 1747865506858
+              modified: 1748038845692
+              isPrivate: false
+              sortKey: -1748013214035
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                		"code": "SALE000001"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+              - name: User-Agent
+                value: insomnia/11.1.0
+            authentication:
+              type: bearer
+              token: "{% response 'body', 'req_48d7b0ca1f7748d79e061936a87ee16d',
+                'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'never', 60 %}"
+              disabled: false
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.ResaleVehicleApiURL }}/transaction/my"
+            name: Minhas Transações
+            meta:
+              id: req_281e066ec2784ab1b11b235ac9039421
+              created: 1748021029285
+              modified: 1748021739757
+              isPrivate: false
+              sortKey: -1748013213935
+            method: GET
+            parameters:
+              - id: pair_3a9cb0262366466caeb20f49dea12a0b
+                name: status
+                value: CANCELLED
+                disabled: true
+              - id: pair_423a8997caf947b998dea8a0482588e9
+                name: maxValue
+                value: "33000"
+                disabled: false
+              - id: pair_cedccc4e382c42f6bd3ee3817818a65e
+                name: minValue
+                value: "50000"
+                disabled: false
+              - id: pair_1f5b0d46deb24e1e9fbd16911849eeed
+                name: sort
+                value: value
+                disabled: false
+              - id: pair_58090e36f6d44f2e8ad0bca7b0e61378
+                name: direction
+                value: ASC
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            authentication:
+              type: bearer
+              token: "{% response 'body', 'req_48d7b0ca1f7748d79e061936a87ee16d',
+                'b64::JC5hY2Nlc3NfdG9rZW4=::46b', 'always', 60 %}"
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: "{{ _.ResaleVehicleApiURL }}/v3/api-docs"
+            name: Listar Veiculos
+            meta:
+              id: req_6c67f5a830c242a49633d87680714fe2
+              created: 1748056651957
+              modified: 1748056661754
+              isPrivate: false
+              sortKey: -1748013214185
+            method: GET
+            parameters:
+              - id: pair_63e2ecd4c9df4545b0965c4a6a3a4e35
+                name: size
+                value: "2"
+                disabled: true
+              - id: pair_a722c3604d8d451da47880538beddec1
+                name: model
+                value: Pulse
+                disabled: true
+              - id: pair_aadbff3a5d834df3ab949384385ee948
+                name: brand
+                value: Fiat
+                disabled: true
+              - id: pair_136355a99bc74796bad1299ec1bfebaf
+                name: color
+                value: BLACK
+                disabled: true
+              - id: pair_3a9cb0262366466caeb20f49dea12a0b
+                name: status
+                value: AVAILABLE
+                disabled: true
+              - id: pair_3e3c2c22e5d54f3483532b8f9cabb7cb
+                name: yearMin
+                value: "2019"
+                disabled: true
+              - id: pair_7a8d054737d0448b88f3ade31a82c069
+                name: yearMax
+                value: "2021"
+                disabled: true
+              - id: pair_423a8997caf947b998dea8a0482588e9
+                name: priceMin
+                value: "33000"
+                disabled: true
+              - id: pair_cedccc4e382c42f6bd3ee3817818a65e
+                name: priceMax
+                value: "50000"
+                disabled: true
+              - id: pair_1f5b0d46deb24e1e9fbd16911849eeed
+                name: sort
+                value: price
+                disabled: false
+              - id: pair_c61d9bf1444b4589bfaaa5a77237bb5f
+                name: direction
+                value: ASC
+                disabled: false
+              - id: pair_58090e36f6d44f2e8ad0bca7b0e61378
+                disabled: false
+            headers:
+              - name: User-Agent
+                value: insomnia/11.1.0
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1732061934225
+    modified: 1738787954306
+  cookies:
+    - key: XSRF-TOKEN
+      value: 6481b540-8403-47f6-8b94-9ba53e9c7bb7
+      domain: hackathon.auth.us-east-1.amazoncognito.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-01-23T23:51:53.529Z
+      lastAccessed: 2025-01-24T00:15:31.173Z
+      sameSite: lax
+      id: fed821ec-81c0-4c14-a7c9-1661e654b24c
+    - key: lang
+      value: en
+      domain: hackathon.auth.us-east-1.amazoncognito.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: true
+      creation: 2025-01-24T00:09:51.303Z
+      lastAccessed: 2025-01-24T00:09:51.303Z
+      sameSite: lax
+      id: dbd1940d-dda1-4e52-a754-ef85714a642c
+    - key: ezoictest
+      value: stable
+      domain: artefatox.com
+      path: /
+      httpOnly: true
+      hostOnly: false
+      creation: 2025-02-05T19:36:47.014Z
+      lastAccessed: 2025-02-05T20:04:26.181Z
+      id: 9e2700f2-a733-4e7f-b888-bed297727be3
+    - key: __cf_bm
+      value: KwLWhi6x40hgX8WAb.NVa.s.d5T.5pNvPcXj9QkZLoA-1738787955-1.0.1.1-_mpm1nBWy_NJWBgzb0R5eSZcyge.0yJ39pePnDsxY7F18ExDN39qbmCHwAGhPTggvCicX8yedhMk4N1wPOOvpA
+      domain: api.openai.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+      creation: 2025-02-05T20:39:14.306Z
+      lastAccessed: 2025-02-05T20:39:14.306Z
+      id: e852555b-4ae5-4cee-a62a-26ac5a58194d
+    - key: _cfuvid
+      value: 9ic4z4t.bEq7oYX1npphzg7CEiMA4Np_50fvoZTaySE-1738787955085-0.0.1.1-604800000
+      domain: api.openai.com
+      path: /
+      secure: true
+      httpOnly: true
+      hostOnly: false
+      creation: 2025-02-05T20:39:14.306Z
+      lastAccessed: 2025-02-05T20:39:14.306Z
+      sameSite: none
+      id: 84d4a3c0-dd25-49f7-9fb1-70b382e48bc0
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1732061934159
+    modified: 1748056508017
+    isPrivate: false
+  data:
+    AuthenticationURL: http://localhost:8080
+    ResaleVehicleApiURL: http://localhost:8081
