@@ -1,3 +1,8 @@
+![Java](https://img.shields.io/badge/Java-17-blue.svg)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.4.5-brightgreen.svg)
+![Maven](https://img.shields.io/badge/Maven-3.9.6-C71A36.svg)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mauriciolimas_revenda-veiculos&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=mauriciolimas_revenda-veiculos)
+
 # 🚗 Plataforma de Revenda de Veículos - API
 
 Este projeto é a API responsável por gerenciar a plataforma de revenda de veículos de uma empresa que atua no mercado de automóveis. A aplicação foi desenvolvida utilizando **Java 17** e **Spring Boot**, seguindo práticas modernas de desenvolvimento, como separação de responsabilidades, autenticação desacoplada.
@@ -78,3 +83,5 @@ Para acessar a interface grafica do keycloak é necessário configurar o arquivo
 ```bash
 127.0.0.1 keycloak
 ```
+
+[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=mauriciolimas_revenda-veiculos)](https://sonarcloud.io/summary/new_code?id=mauriciolimas_revenda-veiculos)
