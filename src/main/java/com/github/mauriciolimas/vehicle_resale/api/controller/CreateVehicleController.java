@@ -1,6 +1,7 @@
 package com.github.mauriciolimas.vehicle_resale.api.controller;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,18 +14,22 @@ import com.github.mauriciolimas.vehicle_resale.application.controller.VehicleCon
 import com.github.mauriciolimas.vehicle_resale.core.exception.BusinessException;
 import com.github.mauriciolimas.vehicle_resale.infra.security.Roles;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
+@Tag(name = "Vehicles")
 @RestController
-@RequestMapping("/vehicles")
+@RequestMapping(path = "/vehicles", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 @AllArgsConstructor
 public class CreateVehicleController {
 
 	private final VehicleController controller;
 	
+	@Operation(summary = "Cadastrar novo veículo", description = "Cadastra um novo veículo no catálogo")
 	@PostMapping
 	@Transactional
 	@RolesAllowed(Roles.SELLER)

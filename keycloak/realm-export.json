@@ -54,6 +54,11 @@
       "publicClient": false,
       "secret": "client-secret",
       "redirectUris": [],
+      "webOrigins": [
+        "http://localhost:8081",
+        "http://localhost:8082",
+        "http://localhost:8083"
+      ],
       "standardFlowEnabled": true,
       "directAccessGrantsEnabled": true,
       "attributes": {

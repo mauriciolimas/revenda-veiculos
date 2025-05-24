@@ -3,6 +3,7 @@ package com.github.mauriciolimas.vehicle_resale.api.controller;
 import static com.github.mauriciolimas.vehicle_resale.infra.security.Roles.BUYER;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,16 +16,20 @@ import com.github.mauriciolimas.vehicle_resale.core.valueobject.pagination.PageD
 import com.github.mauriciolimas.vehicle_resale.core.valueobject.pagination.Pageable;
 import com.github.mauriciolimas.vehicle_resale.core.valueobject.transaction.TransactionFilter;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.security.RolesAllowed;
 import lombok.AllArgsConstructor;
 
+@Tag(name = "Transactions")
 @RestController
 @AllArgsConstructor
-@RequestMapping("/transaction")
+@RequestMapping(path = "/transaction", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 public class ListMyTransactionsController {
 
 	private final TransactionController controller;
 	
+	@Operation(summary = "Listar transações do usuários logado", description = "Lista todas as transações do usuário autenticado")
 	@GetMapping("/my")
 	@RolesAllowed(BUYER)
 	public ResponseEntity<?> myTransactions(TransactionFilter filter, Pageable pageable) throws BusinessException {

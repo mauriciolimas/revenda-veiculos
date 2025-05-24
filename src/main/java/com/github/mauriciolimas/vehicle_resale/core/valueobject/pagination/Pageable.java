@@ -25,10 +25,10 @@ public class Pageable {
 	private Integer size = 25;
 
 	@Setter
-	@Parameter(example = "price.value", required = false, description = "Field sort data")
+	@Parameter(required = false, description = "Propriedade para ordenar a listagem")
 	private String sort;
 
-	@Parameter(example = "ASC or DESC", required = false, description = "Field direction data")
+	@Parameter(required = false, description = "Direção de ordenação valores aceitos ASC ou DESC")
 	private String direction;
 
 	public Pageable(Integer page, Integer size) {

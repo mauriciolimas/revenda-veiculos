@@ -46,7 +46,7 @@ public class SecurityConfiguration {
 			return new String[] {};
 		}
 		String[] routes = this.routesPermited.split(",");
-		Stream.of(routes).forEach(route -> log.debug("Route {} permited without authentication", route));
+		Stream.of(routes).forEach(route -> log.info("Route {} permited without authentication", route));
 		return routes;
 	}
 }
