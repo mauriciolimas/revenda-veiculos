@@ -1,0 +1,88 @@
+{
+  "realm": "revenda",
+  "enabled": true,
+  "groups": [
+    {
+      "name": "buyer"
+    },
+    {
+      "name": "seller"
+    }
+  ],
+  "users": [
+    {
+      "username": "samara.morgan",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Samara",
+      "lastName": "Morgan",
+      "email": "samara@horrorverse.com",
+      "groups": [
+        "buyer"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "123456",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "norman.bates",
+      "enabled": true,
+      "emailVerified": true,
+      "firstName": "Norman",
+      "lastName": "Bates",
+      "email": "norman@batesmotel.com",
+      "groups": [
+        "seller"
+      ],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "123456",
+          "temporary": false
+        }
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "api-revenda",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "client-secret",
+      "redirectUris": [],
+      "webOrigins": [
+        "http://localhost:8081",
+        "http://localhost:8082",
+        "http://localhost:8083"
+      ],
+      "standardFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
+      "attributes": {
+        "access.token.lifespan": "3600",
+        "refresh.token.lifespan": "86400",
+        "client.session.idle.timeout": "1800",
+        "client.session.max.lifespan": "43200"
+      },
+      "protocolMappers": [
+        {
+          "name": "groups",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-group-membership-mapper",
+          "consentRequired": false,
+          "config": {
+            "access.token.claim": "true",
+            "id.token.claim": "true",
+            "userinfo.token.claim": "true",
+            "claim.name": "groups",
+            "jsonType.label": "String",
+            "full.path": "false"
+          }
+        }
+      ]
+    }
+  ]
+}
